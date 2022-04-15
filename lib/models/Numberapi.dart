@@ -14,7 +14,6 @@ class Number {
     required this.type,
   });
 
-
   Map<String, dynamic> toMap() {
     return {
       'text': text,
@@ -35,5 +34,12 @@ class Number {
 
   String toJson() => json.encode(toMap());
 
-  factory Number.fromJson(String source) => Number.fromMap(json.decode(source));
+  factory Number.fromJson(Map<String, dynamic> json) {
+    return Number(
+      text: json['text'] ?? '',
+      number: json['number']!.toString(),
+      found: json['found'] ?? false,
+      type: json['type'] ?? '',
+    );
+  }
 }

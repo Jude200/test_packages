@@ -1,18 +1,25 @@
 // ignore_for_file: file_names
 import 'package:flutter/cupertino.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class IconInput {
-  IconData multiple_2 ;
-  IconData multiple_3 ;
-  IconData multiple_5 ;
-  IconData multiple_7 ;
+  IconData m2 ;
+  IconData m3 ;
+  IconData m5 ;
+  IconData m7 ;
   IconData defaultIcon ;
 
   IconInput({
-    required this.multiple_2,
-    required this.multiple_3,
-    required this.multiple_5,
-    required this.multiple_7,
+    required this.m2,
+    required this.m3,
+    required this.m5,
+    required this.m7,
     required this.defaultIcon,
 }) ;
 }
+IconInput iconInput = IconInput(
+    m2:   FontAwesomeIcons.alipay,
+    m3:   FontAwesomeIcons.alipay,
+    m5:   FontAwesomeIcons.alipay,
+    m7:   FontAwesomeIcons.alipay,
+    defaultIcon:   FontAwesomeIcons.alipay) ;

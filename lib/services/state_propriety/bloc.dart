@@ -1,19 +1,21 @@
 import 'package:bloc/bloc.dart';
 
+import '../../injection_container.dart';
+import '../core.dart';
 import 'event.dart';
 import 'state.dart';
 
 class StateProprietyBloc extends Bloc<StateProprietyEvent, StateProprietyState> {
-  StateProprietyBloc() : super(StateProprietyState().init());
-
-  @override
-  Stream<StateProprietyState> mapEventToState(StateProprietyEvent event) async* {
-    if (event is InitEvent) {
-      yield await init();
-    }
+  StateProprietyBloc() : super(propriety) {
+    on<InitEvent>((event, emit) {
+      getIt<Core>().change();
+      emit(StateProprietyState(
+        icon: getIt<Core>().icon,
+        color: getIt<Core>().color,
+        number: getIt<Core>().num ,
+      )) ;
+    }) ;
   }
 
-  Future<StateProprietyState> init() async {
-    return state.clone();
-  }
+
 }

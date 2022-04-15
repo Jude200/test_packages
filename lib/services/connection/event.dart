@@ -1,3 +1,3 @@
 abstract class ConnectionEvent {}
 
-class InitEvent extends ConnectionEvent {}
+class IsConnected extends ConnectionEvent {}

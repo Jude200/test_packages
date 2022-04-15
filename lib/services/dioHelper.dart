@@ -5,13 +5,13 @@ import 'package:dio/dio.dart';
 class DioHelper {
   final Dio _dio = Dio();
 
-  Future<Map?> getNumberInfo(String url) async {
-    Response<Map>? _r;
+  Future<Response<Map<String, dynamic>>?> getNumberInfo(String url) async {
+    Response<Map<String, dynamic>>? _r;
     try {
       _r = await _dio.get(url);
     } on DioError catch (error) {
       print(error.message);
     }
-    return _r!.data;
+    return _r;
   }
 }

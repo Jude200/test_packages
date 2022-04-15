@@ -1,3 +1,9 @@
-abstract class CounterEvent {}
+abstract class CounterEvent {
+  const CounterEvent() ;
 
-class InitEvent extends CounterEvent {}
+  List<Object> get props => [] ;
+}
+
+class CounterIncrement extends CounterEvent {}
+
+class CounterDecrement extends CounterEvent {}

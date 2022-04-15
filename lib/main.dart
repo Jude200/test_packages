@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it_app/services/counter.dart';
+import 'package:get_it_app/services/connection/bloc.dart';
 import 'package:get_it_app/injection_container.dart' as di;
 import 'package:get_it_app/screens/HomePage.dart';
+import 'package:get_it_app/services/counter/bloc.dart';
+import 'package:get_it_app/services/state_propriety/bloc.dart';
 
 void main() {
   di.init();
@@ -18,11 +20,18 @@ class MyApp extends StatelessWidget {
       title: 'Get it',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'Montserrat',
         primarySwatch: Colors.blue,
       ),
-      home: BlocProvider(
-          create: (_) => Counter(),
-          child: const MyHomePage(title: 'Get it demo')),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider<CounterBloc>(create: (BuildContext context) => CounterBloc()),
+          BlocProvider<ConnectionBloc>(create: (BuildContext context) => ConnectionBloc()),
+          BlocProvider<StateProprietyBloc>(create: (BuildContext context) => StateProprietyBloc())
+        ],
+
+        child: Builder(builder: (context) => const MyHomePage(title: 'Get it demo') ),
+      ),
     );
   }
 }

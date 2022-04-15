@@ -1,9 +1,7 @@
-class CounterState {
-  CounterState init() {
-    return CounterState();
-  }
 
-  CounterState clone() {
-    return CounterState();
-  }
+class CounterState {
+  int count = 0 ;
+
+  void increment() => count ++ ;
+  void decrement() => count -- ;
 }
